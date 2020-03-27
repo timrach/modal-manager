@@ -33,9 +33,21 @@ const AModal: FunctionComponent<ModalProps> = (props) => {
 
   const closeModal = (): void => hideModal(props.id);
 
+  // eslint-disable-next-line no-console
+  const userDidConfirm = (): void => console.log(`${counter} is a good number!`);
+  // eslint-disable-next-line no-console
+  const userCancelled = (): void => console.log(`${counter} is not a good number :(`);
+
   const askToConfirm = (): void => {
     const message = `Confirm that ${counter} is a good number.`;
-    showModal(<ConfirmationDialog id="ConfirmA" message={message} />);
+    showModal(
+      <ConfirmationDialog
+        id="ConfirmA"
+        message={message}
+        onConfirm={userDidConfirm}
+        onCancel={userCancelled}
+      />,
+    );
   };
 
   const increment = (): void => setCounter(counter + 1);
