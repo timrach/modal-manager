@@ -12,6 +12,7 @@ const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {
       isOpen
       ariaHideApp={false}
       onRequestClose={closeModal}
+      style={props.style}
     >
       {props.children}
     </ReactModal>

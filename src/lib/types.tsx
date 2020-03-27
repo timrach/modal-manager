@@ -1,5 +1,6 @@
 export type ModalProps = {
     id: string;
+    style?: Record<string, any>;
     children?: React.ReactNode;
   }
 
