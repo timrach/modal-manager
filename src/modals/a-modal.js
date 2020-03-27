@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useModalActions } from '../lib/modal-context';
 import BModal from '../modals/b-modal';
-import Modal from '../lib/modal';
+import { Modal, useModalActions } from '../lib';
 
 export default function AModal(props) {
   

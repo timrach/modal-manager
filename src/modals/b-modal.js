@@ -1,5 +1,5 @@
 import React from "react";
-import { useModalActions } from '../lib/modal-context';
+import { useModalActions } from '../lib';
 import Modal from 'react-modal';
 
 const customStyles = {

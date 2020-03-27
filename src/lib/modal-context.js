@@ -1,12 +1,8 @@
 import React, { useReducer, useContext, createContext } from "react";
-export const ModalContext = createContext();
 
+export const ModalContext = createContext();
 export const ACTION_SHOW_MODAL = 'ACTION_SHOW_MODAL';
 export const ACTION_HIDE_MODAL = 'ACTION_HIDE_MODAL';
-
-const initialState = {
-  modals: []
-};
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,7 +36,9 @@ const ModalDisplay = () => {
 }
 
 export const ModalContextProvider = props => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, {
+    modals: []
+  });
 
   return (
     <ModalContext.Provider value={{state, dispatch}}>
@@ -50,11 +48,10 @@ export const ModalContextProvider = props => {
   );
 };
 
-
 export function useModalActions() {
   const {dispatch} = useContext(ModalContext);    
   const hideModal = (id)=> dispatch({ type: ACTION_HIDE_MODAL, id});
   const showModal = (modal)=> dispatch({ type: ACTION_SHOW_MODAL, modal});
 
-return [showModal, hideModal];
+  return [showModal, hideModal];
 }

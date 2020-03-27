@@ -1,6 +1,6 @@
 import React from "react";
 import AModal from '../modals/a-modal';
-import { useModalActions } from '../lib/modal-context';
+import { useModalActions } from '../lib';
 
 export default function ModalOpener() {
 
