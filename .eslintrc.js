@@ -26,6 +26,8 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
     "react/prop-types": "off",
     "react/button-has-type": "off",
     "react/destructuring-assignment" : "off",
