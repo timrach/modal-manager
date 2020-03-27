@@ -1,7 +1,7 @@
 ## Usage
 
 Include the ModalContextProvider
-```[javascript]
+```javascript
 import React, { ReactElement } from 'react';
 import ModalOpener from './components/modal-opener';
 import { ModalContextProvider } from './lib';
@@ -17,7 +17,7 @@ export default function App(): ReactElement {
 ```
 
 Create a modal component
-```[javascript]
+```javascript
 import React, { FunctionComponent } from 'react';
 import { Modal, useModalActions } from '../lib';
 import { ModalProps } from '../lib/types';
@@ -46,7 +46,7 @@ export default MyModal;
 
 
 Show the modal
-```[javascript]
+```javascript
 import React, { ReactElement } from 'react';
 import MyModal from '../modals/mymodal';
 import { useModalActions } from '../lib';
