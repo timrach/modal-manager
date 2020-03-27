@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import {ModalContext} from '../lib/modal-context';
+import React from "react";
+import { useModalActions } from '../lib/modal-context';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -14,15 +14,11 @@ const customStyles = {
   };
    
 
-export default function BModal() {
-  const {dispatch} = useContext(ModalContext);
+export default function BModal(props) {
+  // eslint-disable-next-line no-unused-vars
+  const [showModal, hideModal] = useModalActions();
 
-  const closeModal = ()=>{
-      dispatch({
-        type: "HIDE_MODAL",
-        key: "B"
-      })
-  }
+  const closeModal = () => hideModal(props.id);
 
   return (
     <Modal 

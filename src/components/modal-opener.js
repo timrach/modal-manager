@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
+import React from "react";
 import AModal from '../modals/a-modal';
-import { ModalContext } from "../lib/modal-context";
+import { useModalActions } from '../lib/modal-context';
 
 export default function ModalOpener() {
 
-    const {dispatch} = useContext(ModalContext);
-    const openModalA = () => dispatch({ type: 'SHOW_MODAL', modal: <AModal key="A"/>})
+    const [showModal] = useModalActions();
+    const openModalA = () => showModal (<AModal id="A"/>);
 
     return (
         <div>

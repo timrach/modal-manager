@@ -1,20 +1,23 @@
 import React, { useReducer, useContext, createContext } from "react";
 export const ModalContext = createContext();
 
+export const ACTION_SHOW_MODAL = 'ACTION_SHOW_MODAL';
+export const ACTION_HIDE_MODAL = 'ACTION_HIDE_MODAL';
+
 const initialState = {
   modals: []
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SHOW_MODAL":
+    case ACTION_SHOW_MODAL:
       return {
         modals: [...state.modals, action.modal]
       };
-    case "HIDE_MODAL":
+    case ACTION_HIDE_MODAL:
       return {
         modals: state.modals.filter(
-          contact => contact.key !== action.key
+          modal => modal.props.id !== action.id
         )
       };
     default:
@@ -27,7 +30,11 @@ const ModalDisplay = () => {
 
   return (
     <div>
-        {state.modals.map((modal) => modal)}
+        {state.modals.map((modal) => 
+          <React.Fragment key={modal.props.id}>
+          {modal}
+          </React.Fragment>
+          )}
     </div>
   );
 }
@@ -42,3 +49,12 @@ export const ModalContextProvider = props => {
     </ModalContext.Provider>
   );
 };
+
+
+export function useModalActions() {
+  const {dispatch} = useContext(ModalContext);    
+  const hideModal = (id)=> dispatch({ type: ACTION_HIDE_MODAL, id});
+  const showModal = (modal)=> dispatch({ type: ACTION_SHOW_MODAL, modal});
+
+return [showModal, hideModal];
+}
